@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGreenLight"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_add"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:elevation="4dp"></com.google.android.material.appbar.MaterialToolbar>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="7">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:padding="20dp" />
+
+                <EditText
+                    android:id="@+id/et_cost"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="6"
+                    android:backgroundTint="@android:color/darker_gray"
+
+                    android:hint="@string/hint_note"
+                    android:inputType="number"
+                    android:text="@string/txt_cost"
+                    android:textColor="@color/colorGreenDark"
+                    android:textCursorDrawable="@android:color/darker_gray"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="7">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:padding="20dp"
+                    android:src="@drawable/ic_account_balance_wallet_black" />
+
+                <EditText
+                    android:id="@+id/et_wallet"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="6"
+                    android:textColor="@color/colorGreenDark"
+                    android:focusable="false"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:hint="@string/hint_wallet"
+                    android:inputType="text"
+                    android:textCursorDrawable="@android:color/darker_gray"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="7">
+
+                <ImageView
+                    android:id="@+id/img_category_service"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:padding="20dp"
+                    android:src="@drawable/ic_library_books_black" />
+
+                <EditText
+                    android:id="@+id/et_category_service"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="6"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:focusable="false"
+                    android:hint="@string/hint_category_service"
+                    android:textCursorDrawable="@android:color/darker_gray"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="7">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:padding="20dp"
+                    android:src="@drawable/ic_short_text_black" />
+
+                <EditText
+                    android:id="@+id/et_note"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="6"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:hint="@string/hint_note"
+                    android:textColor="@color/colorGreenDark"
+                    android:inputType="text"
+                    android:textCursorDrawable="@android:color/darker_gray"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="7">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:padding="20dp"
+                    android:src="@drawable/ic_event_black" />
+
+                <EditText
+                    android:id="@+id/et_event"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="6"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:hint="@string/hint_event"
+                    android:focusable="false"
+                    android:textCursorDrawable="@android:color/darker_gray"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="7">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:padding="20dp"
+                android:src="@drawable/ic_group_black" />
+
+            <EditText
+                android:id="@+id/et_friend"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="6"
+                android:inputType="text"
+                android:backgroundTint="@android:color/darker_gray"
+                android:hint="@string/txt_friend"
+                android:textColor="@color/colorGreenDark"
+                android:textCursorDrawable="@android:color/darker_gray"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="7">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:padding="20dp"
+                    android:src="@drawable/ic_event_black" />
+
+                <EditText
+                    android:id="@+id/et_event_add"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="6"
+                    android:inputType="text"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:hint="@string/txt_add_event"
+                    android:textColor="@color/colorGreenDark"
+                    android:textCursorDrawable="@android:color/darker_gray"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="7">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:padding="20dp"
+                    android:src="@drawable/ic_access_alarms_black" />
+
+                <EditText
+                    android:id="@+id/et_clock_add"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="6"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:focusable="false"
+                    android:hint="@string/txt_clock_add"
+                    android:textColor="@color/colorGreenDark"
+                    android:textCursorDrawable="@android:color/darker_gray"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
