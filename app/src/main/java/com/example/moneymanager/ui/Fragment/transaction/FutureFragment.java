@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,6 +80,7 @@ public class FutureFragment extends Fragment {
         Calendar calendar = Calendar.getInstance();
         int currentDate = calendar.get(Calendar.MONTH) + calendar.get(Calendar.YEAR) * 12 + 1;
         if (tempDate > currentDate) {
+//            Log.d("12312311",tempDate+"");
             return true;
         }
         return false;

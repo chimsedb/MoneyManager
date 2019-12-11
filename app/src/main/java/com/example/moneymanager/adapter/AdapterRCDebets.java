@@ -11,8 +11,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moneymanager.R;
-import com.example.moneymanager.callback.IRecyclerViewClickListener;
-import com.example.moneymanager.eventBus.CostItemClick;
+import com.example.moneymanager.callback.IRecyclerDebetsViewClickListener;
 import com.example.moneymanager.eventBus.DebetItemClick;
 import com.example.moneymanager.model.Debet;
 
@@ -42,7 +41,7 @@ public class AdapterRCDebets extends RecyclerView.Adapter<AdapterRCDebets.ViewHo
     public void onBindViewHolder(@NonNull AdapterRCDebets.ViewHolder holder, int position) {
         holder.imv_debets.setImageResource(debets.get(position).getImage());
         holder.txt_debets.setText(debets.get(position).getName());
-        holder.setListener(new IRecyclerViewClickListener() {
+        holder.setListener(new IRecyclerDebetsViewClickListener() {
             @Override
             public void onItemClickListener(View view, int position) {
                 boolean statusAdd = getStatusAddDebet(position);
@@ -75,9 +74,9 @@ public class AdapterRCDebets extends RecyclerView.Adapter<AdapterRCDebets.ViewHo
 
         ImageView imv_debets;
         TextView txt_debets;
-        IRecyclerViewClickListener listener;
+        IRecyclerDebetsViewClickListener listener;
 
-        public void setListener(IRecyclerViewClickListener listener) {
+        public void setListener(IRecyclerDebetsViewClickListener listener) {
             this.listener = listener;
         }
 

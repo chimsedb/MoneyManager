@@ -12,9 +12,6 @@ import com.example.moneymanager.R;
 import com.example.moneymanager.ui.Fragment.service.CostFragment;
 import com.example.moneymanager.ui.Fragment.service.DebetsFragment;
 import com.example.moneymanager.ui.Fragment.service.RevenueFragment;
-import com.example.moneymanager.ui.Fragment.transaction.FutureFragment;
-import com.example.moneymanager.ui.Fragment.transaction.NowFragment;
-import com.example.moneymanager.ui.Fragment.transaction.PastFragment;
 
 public class AdapterViewPagerService extends FragmentStatePagerAdapter {
     private Context context;

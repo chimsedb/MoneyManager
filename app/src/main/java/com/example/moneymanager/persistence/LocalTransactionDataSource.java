@@ -4,6 +4,7 @@ import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
+import io.reactivex.Single;
 
 public class LocalTransactionDataSource implements TransactionDataSource {
 
@@ -21,5 +22,10 @@ public class LocalTransactionDataSource implements TransactionDataSource {
     @Override
     public Completable insertTransaction(Transaction... transaction) {
         return transactionDAO.insertTransaction(transaction);
+    }
+
+    @Override
+    public Single deleteTransaction(Transaction transaction) {
+        return transactionDAO.deleteTransaction(transaction);
     }
 }

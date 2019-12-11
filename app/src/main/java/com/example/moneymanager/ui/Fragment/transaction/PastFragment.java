@@ -81,6 +81,7 @@ public class PastFragment extends Fragment {
         Calendar calendar = Calendar.getInstance();
         int currentDate = calendar.get(Calendar.MONTH) + calendar.get(Calendar.YEAR) * 12 + 1;
         if (tempDate < currentDate) {
+//            Log.d("12312311",tempDate+"");
             return true;
         }
         return false;

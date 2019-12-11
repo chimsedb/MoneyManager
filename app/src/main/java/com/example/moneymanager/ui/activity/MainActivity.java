@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import com.example.moneymanager.Comon.Comon;
 import com.example.moneymanager.R;
-import com.example.moneymanager.model.User;
 import com.example.moneymanager.ui.Fragment.statistic.StatisticFragment;
 import com.example.moneymanager.ui.Fragment.debets.DebetFragment;
 import com.example.moneymanager.ui.Fragment.transaction.TransactionFragment;
@@ -40,6 +39,8 @@ public class MainActivity extends AppCompatActivity
     private NavigationView navigationView;
     private TextView txt_title_header;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity
         navigationView = findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
         txt_title_header = headerView.findViewById(R.id.txt_title_header);
-        txt_title_header.setText("Hi! "+Comon.CURRENT_USER.getName());
+        txt_title_header.setText("Hi! " + Comon.CURRENT_USER.getName());
 
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.menu_transactions));
@@ -96,7 +97,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+//        this.menu = menu;
+
         getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem item = menu.findItem(R.id.action_settings);
+        item.setVisible(false);
         return true;
     }
 
@@ -151,4 +156,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }

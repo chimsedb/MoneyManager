@@ -1,7 +1,5 @@
 package com.example.moneymanager.adapter;
 
-import android.app.Activity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +11,9 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moneymanager.R;
-import com.example.moneymanager.callback.IRecyclerViewClickListener;
+import com.example.moneymanager.callback.IRecyclerCostViewClickListener;
 import com.example.moneymanager.eventBus.CostItemClick;
 import com.example.moneymanager.model.Cost;
-import com.example.moneymanager.model.Debet;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -43,7 +40,7 @@ public class AdapterRCCost extends RecyclerView.Adapter<AdapterRCCost.ViewHolder
     public void onBindViewHolder(@NonNull AdapterRCCost.ViewHolder holder, int position) {
         holder.imv_costs.setImageResource(costs.get(position).getImage());
         holder.txt_costs.setText(costs.get(position).getName());
-        holder.setListener(new IRecyclerViewClickListener() {
+        holder.setListener(new IRecyclerCostViewClickListener() {
             @Override
             public void onItemClickListener(View view, int position) {
                 EventBus.getDefault().postSticky(new CostItemClick(true,costs.get(position),false,false,false));
@@ -61,9 +58,9 @@ public class AdapterRCCost extends RecyclerView.Adapter<AdapterRCCost.ViewHolder
 
         ImageView imv_costs;
         TextView txt_costs;
-        IRecyclerViewClickListener listener;
+        IRecyclerCostViewClickListener listener;
 
-        public void setListener(IRecyclerViewClickListener listener) {
+        public void setListener(IRecyclerCostViewClickListener listener) {
             this.listener = listener;
         }
 

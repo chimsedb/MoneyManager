@@ -144,7 +144,8 @@ public class AddTransactionActivity extends AppCompatActivity {
         et_category_service.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityForResult(new Intent(AddTransactionActivity.this, ServiceActivity.class), Comon.REQUEST_ADD);
+//                startActivityForResult(new Intent(AddTransactionActivity.this, ServiceActivity.class), Comon.REQUEST_ADD);
+                startActivity(new Intent(AddTransactionActivity.this, ServiceActivity.class));
             }
         });
 
@@ -174,11 +175,6 @@ public class AddTransactionActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -190,19 +186,34 @@ public class AddTransactionActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_save:
-                TransactionDataSource dataSource = new LocalTransactionDataSource(TransactionDatabase.getInstance(getApplicationContext()).transactionDAO());
-                compositeDisposable.add(dataSource.insertTransaction(getTransaction())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeOn(Schedulers.io())
-                        .subscribe(new Action() {
-                            @Override
-                            public void run() throws Exception {
-                                Toasty.success(getApplicationContext(),"[INSERTED]",Toasty.LENGTH_LONG).show();
-                            }
-                        }));
+                if (checkNullEditText()) {
+                    TransactionDataSource dataSource = new LocalTransactionDataSource(TransactionDatabase.getInstance(getApplicationContext()).transactionDAO());
+                    compositeDisposable.add(dataSource.insertTransaction(getTransaction())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribeOn(Schedulers.io())
+                            .subscribe(new Action() {
+                                @Override
+                                public void run() throws Exception {
+                                    Toasty.success(getApplicationContext(), "[THÊM THÀNH CÔNG]", Toasty.LENGTH_LONG).show();
+                                    finish();
+                                }
+                            }));
+                } else {
+                    Toasty.error(getApplicationContext(), "[THÊM THẤT BẠI]", Toasty.LENGTH_LONG).show();
+                }
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private boolean checkNullEditText() {
+        if (!et_cost.getText().toString().equals("")
+                && !et_category_service.getText().toString().equals("")
+                && !et_event.getText().toString().equals("")
+                && et_cost.getText().toString().contains("VND")) {
+            return true;
+        }
+        return false;
     }
 
     private Transaction getTransaction() {
@@ -210,7 +221,7 @@ public class AddTransactionActivity extends AppCompatActivity {
         transaction.setWallet(et_cost.getText().toString());
         transaction.setService(et_category_service.getText().toString());
 
-        Bitmap bitmap = ((BitmapDrawable)img_category_service.getDrawable()).getBitmap();
+        Bitmap bitmap = ((BitmapDrawable) img_category_service.getDrawable()).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] imgBitmap = stream.toByteArray();
@@ -231,6 +242,7 @@ public class AddTransactionActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         EventBus.getDefault().register(this);
+
     }
 
     @Override
@@ -240,21 +252,11 @@ public class AddTransactionActivity extends AppCompatActivity {
         compositeDisposable.clear();
     }
 
-    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    public void onCostItemClicked(CostItemClick event) {
-        if (event.isSucces()) {
-            et_wallet.setText(Comon.CURRENT_USER.getName());
-            img_category_service.setImageResource(event.getCost().getImage());
-            et_category_service.setText(event.getCost().getName());
-            Comon.STATUS_ADD_DEBET = event.isStatusAddDebets();
-            Comon.STATUS_REDUCE_DEBET = event.isStatusReduceDebets();
-            Comon.STATUS_TRANSACTION = event.isStatusTransaction();
-        }
-    }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void onDebetItemClicked(DebetItemClick event) {
         if (event.isSucces()) {
+
             et_wallet.setText(Comon.CURRENT_USER.getName());
             img_category_service.setImageResource(event.getDebet().getImage());
             et_category_service.setText(event.getDebet().getName());
@@ -262,11 +264,14 @@ public class AddTransactionActivity extends AppCompatActivity {
             Comon.STATUS_REDUCE_DEBET = event.isStatusReduceDebets();
             Comon.STATUS_TRANSACTION = event.isStatusTransaction();
         }
+        EventBus.getDefault().removeStickyEvent(DebetItemClick.class);
+
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
     public void onRevenueItemClicked(RevenueItemClick event) {
         if (event.isSucces()) {
+
             et_wallet.setText(Comon.CURRENT_USER.getName());
             img_category_service.setImageResource(event.getRevenue().getImage());
             et_category_service.setText(event.getRevenue().getName());
@@ -274,6 +279,21 @@ public class AddTransactionActivity extends AppCompatActivity {
             Comon.STATUS_REDUCE_DEBET = event.isStatusReduceDebets();
             Comon.STATUS_TRANSACTION = event.isStatusTransaction();
         }
+        EventBus.getDefault().removeStickyEvent(RevenueItemClick.class);
+    }
+
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void onCostItemClicked(CostItemClick event) {
+        if (event.isSucces()) {
+
+            et_wallet.setText(Comon.CURRENT_USER.getName());
+            img_category_service.setImageResource(event.getCost().getImage());
+            et_category_service.setText(event.getCost().getName());
+            Comon.STATUS_ADD_DEBET = event.isStatusAddDebets();
+            Comon.STATUS_REDUCE_DEBET = event.isStatusReduceDebets();
+            Comon.STATUS_TRANSACTION = event.isStatusTransaction();
+        }
+        EventBus.getDefault().removeStickyEvent(CostItemClick.class);
     }
 }
 
