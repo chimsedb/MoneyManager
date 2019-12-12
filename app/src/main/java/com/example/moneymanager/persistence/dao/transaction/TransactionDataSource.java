@@ -1,4 +1,6 @@
-package com.example.moneymanager.persistence;
+package com.example.moneymanager.persistence.dao.transaction;
+
+import com.example.moneymanager.persistence.entities.Transaction;
 
 import java.util.List;
 
@@ -13,4 +15,6 @@ public interface TransactionDataSource {
     Completable insertTransaction(Transaction... transaction);
 
     Single<Integer> deleteTransaction(Transaction transaction);
+
+    Completable deleteAllTransaction();
 }

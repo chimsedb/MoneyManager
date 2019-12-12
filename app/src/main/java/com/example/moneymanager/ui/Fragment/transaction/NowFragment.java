@@ -20,18 +20,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
-import com.example.moneymanager.Comon.Comon;
 import com.example.moneymanager.R;
 import com.example.moneymanager.adapter.AdapterRCNow;
-import com.example.moneymanager.eventBus.CostItemClick;
 import com.example.moneymanager.eventBus.NowItemClick;
 import com.example.moneymanager.eventBus.NowItemLongClick;
-import com.example.moneymanager.persistence.LocalTransactionDataSource;
-import com.example.moneymanager.persistence.Transaction;
-import com.example.moneymanager.persistence.TransactionDataSource;
-import com.example.moneymanager.persistence.TransactionDatabase;
+import com.example.moneymanager.persistence.dao.transaction.LocalTransactionDataSource;
+import com.example.moneymanager.persistence.entities.Transaction;
+import com.example.moneymanager.persistence.dao.transaction.TransactionDataSource;
+import com.example.moneymanager.persistence.local.Database;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -41,7 +38,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.BiConsumer;
@@ -144,7 +140,7 @@ public class NowFragment extends Fragment implements MenuItem.OnMenuItemClickLis
         switch (item.getItemId()) {
             case R.id.action_settings:
                 Log.d("123123", "123123");
-                TransactionDataSource dataSource = new LocalTransactionDataSource(TransactionDatabase.getInstance(getContext()).transactionDAO());
+                TransactionDataSource dataSource = new LocalTransactionDataSource(Database.getInstance(getContext()).transactionDAO());
                 for (int i = 0; i < tempStatus.size(); i++) {
                     if (tempStatus.get(i).booleanValue() == true) {
                         compositeDisposable.add(dataSource.deleteTransaction(tempTransactions.get(i))

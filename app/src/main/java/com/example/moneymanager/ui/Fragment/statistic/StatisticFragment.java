@@ -11,25 +11,20 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.moneymanager.Comon.Comon;
 import com.example.moneymanager.R;
-import com.example.moneymanager.adapter.AdapterRCNow;
 import com.example.moneymanager.adapter.AdapterRcStatistic;
 import com.example.moneymanager.model.TransactionStatistic;
-import com.example.moneymanager.persistence.Transaction;
+import com.example.moneymanager.persistence.entities.Transaction;
 import com.example.moneymanager.ui.Fragment.transaction.ViewModelTransaction;
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
-import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;

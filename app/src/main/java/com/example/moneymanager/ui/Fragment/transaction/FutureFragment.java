@@ -9,7 +9,6 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,7 @@ import android.widget.TextView;
 
 import com.example.moneymanager.R;
 import com.example.moneymanager.adapter.AdapterRCNow;
-import com.example.moneymanager.persistence.Transaction;
+import com.example.moneymanager.persistence.entities.Transaction;
 
 import java.util.ArrayList;
 import java.util.Calendar;

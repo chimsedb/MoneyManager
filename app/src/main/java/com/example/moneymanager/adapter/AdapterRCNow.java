@@ -17,7 +17,7 @@ import com.example.moneymanager.callback.IRecyclerCostViewClickListener;
 import com.example.moneymanager.callback.IRecyclerViewLongClickListener;
 import com.example.moneymanager.eventBus.NowItemClick;
 import com.example.moneymanager.eventBus.NowItemLongClick;
-import com.example.moneymanager.persistence.Transaction;
+import com.example.moneymanager.persistence.entities.Transaction;
 
 import org.greenrobot.eventbus.EventBus;
 

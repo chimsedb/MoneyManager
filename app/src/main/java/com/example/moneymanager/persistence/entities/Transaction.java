@@ -1,4 +1,4 @@
-package com.example.moneymanager.persistence;
+package com.example.moneymanager.persistence.entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;

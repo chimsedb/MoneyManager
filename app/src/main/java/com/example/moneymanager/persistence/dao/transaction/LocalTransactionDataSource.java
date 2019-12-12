@@ -1,4 +1,6 @@
-package com.example.moneymanager.persistence;
+package com.example.moneymanager.persistence.dao.transaction;
+
+import com.example.moneymanager.persistence.entities.Transaction;
 
 import java.util.List;
 
@@ -27,5 +29,10 @@ public class LocalTransactionDataSource implements TransactionDataSource {
     @Override
     public Single deleteTransaction(Transaction transaction) {
         return transactionDAO.deleteTransaction(transaction);
+    }
+
+    @Override
+    public Completable deleteAllTransaction() {
+        return transactionDAO.deleteAllTransaction();
     }
 }

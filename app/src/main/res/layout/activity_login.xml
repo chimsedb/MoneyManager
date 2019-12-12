@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/et_email"
+            android:inputType="textEmailAddress"
             android:paddingLeft="15dp"
             android:background="@color/colorGreenLight"/>
     </com.google.android.material.textfield.TextInputLayout>

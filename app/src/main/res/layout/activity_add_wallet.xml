@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorGreenLight"
+    tools:context=".ui.activity.add_wallet.AddWalletActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:elevation="4dp">
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="7">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:padding="20dp" />
+
+                <EditText
+                    android:id="@+id/et_cost"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="6"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:hint="@string/hint_note"
+                    android:inputType="number"
+                    android:text="@string/txt_cost"
+                    android:textColor="@color/colorGreenDark"
+                    android:textCursorDrawable="@android:color/darker_gray"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="7">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:padding="20dp"
+                    android:src="@drawable/ic_account_balance_wallet_black" />
+
+                <EditText
+                    android:id="@+id/et_wallet"
+                    android:focusable="false"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="6"
+                    android:textColor="@color/colorGreenDark"
+                    android:backgroundTint="@android:color/darker_gray"
+                    android:hint="@string/hint_wallet"
+                    android:inputType="text"
+                    android:textCursorDrawable="@android:color/darker_gray"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.example.moneymanager.R;
 import com.example.moneymanager.adapter.AdapterRCNow;
-import com.example.moneymanager.persistence.Transaction;
+import com.example.moneymanager.persistence.entities.Transaction;
 import com.example.moneymanager.ui.Fragment.transaction.ViewModelTransaction;
 
 import java.util.ArrayList;

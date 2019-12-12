@@ -1,10 +1,12 @@
-package com.example.moneymanager.persistence;
+package com.example.moneymanager.persistence.dao.transaction;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+
+import com.example.moneymanager.persistence.entities.Transaction;
 
 import java.util.List;
 
@@ -23,4 +25,7 @@ public interface TransactionDAO {
 
     @Delete
     Single<Integer> deleteTransaction(Transaction transaction);
+
+    @Query("DELETE FROM `Transaction`")
+    Completable deleteAllTransaction();
 }

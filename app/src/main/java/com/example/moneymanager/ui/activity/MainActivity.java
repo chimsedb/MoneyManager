@@ -8,6 +8,7 @@ import com.example.moneymanager.R;
 import com.example.moneymanager.ui.Fragment.statistic.StatisticFragment;
 import com.example.moneymanager.ui.Fragment.debets.DebetFragment;
 import com.example.moneymanager.ui.Fragment.transaction.TransactionFragment;
+import com.example.moneymanager.ui.Fragment.wallet.WalletFragment;
 import com.example.moneymanager.ui.activity.add.AddTransactionActivity;
 import com.example.moneymanager.ui.activity.login.LoginActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -40,7 +41,6 @@ public class MainActivity extends AppCompatActivity
     private TextView txt_title_header;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,10 +63,10 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-
+        fab.setVisibility(View.INVISIBLE);
         manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.layout_main, new TransactionFragment(), "transaction");
+        transaction.replace(R.id.layout_main, new WalletFragment(), "wallet");
         transaction.commit();
 
         handleEvent();
@@ -125,14 +125,21 @@ public class MainActivity extends AppCompatActivity
 
         int id = item.getItemId();
 
-        if (id == R.id.nav_transactions) {
-            if (manager.findFragmentByTag("transaction") == null) {
+        if (id == R.id.nav_wallet) {
+            if (manager.findFragmentByTag("wallet") == null) {
+                toolbar.setTitle(getString(R.string.menu_wallet));
                 FragmentTransaction transaction = manager.beginTransaction();
-                toolbar.setTitle(getString(R.string.menu_transactions));
-                transaction.replace(R.id.layout_main, new TransactionFragment());
+                transaction.replace(R.id.layout_main, new WalletFragment());
                 transaction.commit();
-                fab.setVisibility(View.VISIBLE);
+                fab.setVisibility(View.INVISIBLE);
             }
+        } else if (id == R.id.nav_transactions) {
+
+            FragmentTransaction transaction = manager.beginTransaction();
+            toolbar.setTitle(getString(R.string.menu_transactions));
+            transaction.replace(R.id.layout_main, new TransactionFragment());
+            transaction.commit();
+            fab.setVisibility(View.VISIBLE);
             toolbar.setTitle(getString(R.string.menu_transactions));
         } else if (id == R.id.nav_budgets) {
             toolbar.setTitle(getString(R.string.menu_budgets));

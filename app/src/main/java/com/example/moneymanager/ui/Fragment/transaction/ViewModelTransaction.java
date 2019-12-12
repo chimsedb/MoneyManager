@@ -5,10 +5,10 @@ import android.content.Context;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.moneymanager.persistence.LocalTransactionDataSource;
-import com.example.moneymanager.persistence.Transaction;
-import com.example.moneymanager.persistence.TransactionDataSource;
-import com.example.moneymanager.persistence.TransactionDatabase;
+import com.example.moneymanager.persistence.dao.transaction.LocalTransactionDataSource;
+import com.example.moneymanager.persistence.entities.Transaction;
+import com.example.moneymanager.persistence.dao.transaction.TransactionDataSource;
+import com.example.moneymanager.persistence.local.Database;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class ViewModelTransaction extends ViewModel {
     private TransactionDataSource dataSource;
 
     public ViewModelTransaction(Context context) {
-        dataSource = new LocalTransactionDataSource(TransactionDatabase.getInstance(context).transactionDAO());
+        dataSource = new LocalTransactionDataSource(Database.getInstance(context).transactionDAO());
     }
 
     public MutableLiveData<List<Transaction>> getLiveDataTransaction() {

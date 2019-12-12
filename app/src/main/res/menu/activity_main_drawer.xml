@@ -2,10 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
+    <group android:id="@+id/group_wallet">
+        <item
+            android:id="@+id/nav_wallet"
+            android:icon="@drawable/ic_account_balance_wallet_black"
+            android:title="@string/menu_wallet" />
+    </group>
     <group android:id="@+id/group_transactions">
         <item
             android:id="@+id/nav_transactions"
-            android:icon="@drawable/ic_account_balance_wallet_black"
+            android:icon="@drawable/ic_compare_arrows_black"
             android:title="@string/menu_transactions" />
     </group>
     <group android:id="@+id/group_debts">

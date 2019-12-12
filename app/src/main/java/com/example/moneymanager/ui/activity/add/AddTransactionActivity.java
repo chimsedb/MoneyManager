@@ -4,12 +4,9 @@ import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +16,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,10 +28,10 @@ import com.example.moneymanager.R;
 import com.example.moneymanager.eventBus.CostItemClick;
 import com.example.moneymanager.eventBus.DebetItemClick;
 import com.example.moneymanager.eventBus.RevenueItemClick;
-import com.example.moneymanager.persistence.LocalTransactionDataSource;
-import com.example.moneymanager.persistence.Transaction;
-import com.example.moneymanager.persistence.TransactionDataSource;
-import com.example.moneymanager.persistence.TransactionDatabase;
+import com.example.moneymanager.persistence.dao.transaction.LocalTransactionDataSource;
+import com.example.moneymanager.persistence.entities.Transaction;
+import com.example.moneymanager.persistence.dao.transaction.TransactionDataSource;
+import com.example.moneymanager.persistence.local.Database;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -44,7 +40,6 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 import es.dmoral.toasty.Toasty;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -187,7 +182,7 @@ public class AddTransactionActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_save:
                 if (checkNullEditText()) {
-                    TransactionDataSource dataSource = new LocalTransactionDataSource(TransactionDatabase.getInstance(getApplicationContext()).transactionDAO());
+                    TransactionDataSource dataSource = new LocalTransactionDataSource(Database.getInstance(getApplicationContext()).transactionDAO());
                     compositeDisposable.add(dataSource.insertTransaction(getTransaction())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribeOn(Schedulers.io())

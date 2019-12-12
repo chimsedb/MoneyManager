@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.moneymanager.R;
-import com.example.moneymanager.persistence.Transaction;
+import com.example.moneymanager.persistence.entities.Transaction;
 
 import java.util.List;
 

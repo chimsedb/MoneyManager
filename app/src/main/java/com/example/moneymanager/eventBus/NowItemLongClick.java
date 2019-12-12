@@ -1,6 +1,6 @@
 package com.example.moneymanager.eventBus;
 
-import com.example.moneymanager.persistence.Transaction;
+import com.example.moneymanager.persistence.entities.Transaction;
 
 import java.util.List;
 
